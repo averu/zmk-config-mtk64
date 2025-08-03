@@ -34,6 +34,31 @@
 
             tap-ms = <20>; // スクロールのタップ時間
         };
+
+        alt_tab_fwd: alt_tab_fwd {
+            compatible = "zmk,behavior-macro";
+            label = "ALT_TAB_FWD";
+            #binding-cells = <0>;
+            bindings = <
+                &kp LALT      // Alt押し
+                &kp TAB       // Tab押し
+            >;
+            wait-ms = <10>; // 適度なウェイトを入れる
+            tap-ms = <10>;
+        };
+
+        alt_tab_bwd: alt_tab_bwd {
+            compatible = "zmk,behavior-macro";
+            label = "ALT_TAB_BWD";
+            #binding-cells = <0>;
+            bindings = <
+                &kp LALT
+                &kp LSFT
+                &kp TAB
+            >;
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
     };
 };
 
