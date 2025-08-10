@@ -45,140 +45,198 @@
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
 
-        alt_p: alt-positive {
+        w_r_alt_p: win-right-alt-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp KP_N0>, <&kp LS(TAB)>;
+            bindings = <&kp KP_N0>, <&kp RIGHT>;
 
-            mods = <(MOD_LALT|MOD_RALT)>;
+            mods = <(MOD_RALT)>;
+            keep-mods = <(MOD_RALT)>;
+        };
+
+        w_alt_p: win-alt-positive {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&w_r_alt_p>, <&kp TAB>;
+
+            mods = <(MOD_LALT)>;
             keep-mods = <(MOD_LALT)>;
         };
 
-        gui_p: gui-positive {
+        w_r_gui_p: win-right-gui-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp KP_N0>, <&kp LEFT_ARROW>;
+            bindings = <&kp KP_N0>, <&kp LC(RIGHT)>;
 
-            mods = <(MOD_LGUI|MOD_RGUI)>;
+            mods = <(MOD_RGUI)>;
+            keep-mods = <(MOD_RGUI)>;
+        };
+
+        w_gui_p: win-gui-positive {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&w_r_gui_p>, <&kp RIGHT>;
+
+            mods = <(MOD_LGUI)>;
             keep-mods = <(MOD_LGUI)>;
         };
 
-        ag_p: alt-gui-positive {
+        w_alt_gui_p: win-alt-gui-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&gui_p>, <&alt_p>;
+            bindings = <&w_gui_p>, <&w_alt_p>;
 
             mods = <(MOD_LALT|MOD_RALT)>;
         };
 
-        arrow_p: arrow-positive {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_ARROW>, <&kp DOWN>;
-
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-
-        vol_arrow_p: volume-arrow-positive {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp C_VOLUME_DOWN>, <&arrow_p>;
-
-            mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
-        };
-
-        vol_alt_gui_p: volume-alt-gui-positive {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&vol_arrow_p>, <&ag_p>;
-
-            mods = <(MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI)>;
-        };
-
-        alt_n: alt-negative {
+        w_r_ctrl_p: win-right-ctrl-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp KP_N0>, <&kp TAB>;
 
-            mods = <(MOD_LALT|MOD_RALT)>;
-            keep-mods = <(MOD_LALT)>;
+            mods = <(MOD_RCTL)>;
+            keep-mods = <(MOD_RCTL)>;
         };
 
-        gui_n: gui-negative {
+        w_ctrl_p: win-ctrl-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp KP_N0>, <&kp RIGHT_ARROW>;
+            bindings = <&w_r_ctrl_p>, <&kp DOWN>;
 
-            mods = <(MOD_LGUI|MOD_RGUI)>;
-            keep-mods = <(MOD_LGUI)>;
+            mods = <(MOD_LCTL)>;
         };
 
-        ag_n: alt-gui-negative {
+        w_shift_p: win-shift-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&gui_n>, <&alt_n>;
+            bindings = <&none>, <&kp RIGHT>;
 
-            mods = <(MOD_LALT|MOD_RALT)>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
-        arrow_n: arrow-negative {
+        w_shift_ctrl_p: win-shift-ctrl-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp RIGHT_ARROW>, <&kp UP>;
+            bindings = <&w_shift_p>, <&w_ctrl_p>;
 
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
-        vol_arrow_n: volume-arrow-negative {
+        w_shift_ctrl_none_p: win_shift-ctrl-none-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp C_VOLUME_UP>, <&arrow_n>;
+            bindings = <&kp LC(LG(RIGHT_ARROW))>, <&w_shift_ctrl_p>;
 
-            mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
+            mods = <(MOD_LSFT|MOD_LCTL|MOD_RSFT|MOD_RCTL)>;
         };
 
-        vol_alt_gui_n: volume-right-alt-gui-negative {
+        win_enc_p: win-enc-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&vol_arrow_n>, <&ag_n>;
+            bindings = <&w_shift_ctrl_none_p>, <&w_alt_gui_p>;
 
-            mods = <(MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI)>;
+            mods = <(MOD_LALT|MOD_LGUI|MOD_RALT|MOD_RGUI)>;
         };
 
-        vol_alt_tab: volume-alt-tab {
+        w_r_alt_n: win-right-alt-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N0>, <&kp LEFT>;
+
+            mods = <(MOD_RALT)>;
+            keep-mods = <(MOD_RALT)>;
+        };
+
+        w_alt_n: win-alt-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&w_r_alt_n>, <&kp LS(TAB)>;
+
+            mods = <(MOD_LALT)>;
+            keep-mods = <(MOD_LALT)>;
+        };
+
+        w_r_gui_n: win-right-gui-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N0>, <&kp LC(LEFT)>;
+
+            mods = <(MOD_RGUI)>;
+            keep-mods = <(MOD_RGUI)>;
+        };
+
+        w_gui_n: win-gui-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&w_r_gui_n>, <&kp LEFT>;
+
+            mods = <(MOD_LGUI)>;
+            keep-mods = <(MOD_LGUI)>;
+        };
+
+        w_alt_gui_n: win-alt-gui-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&w_gui_n>, <&w_alt_n>;
+
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        w_r_ctrl_n: win-right-ctrl-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N0>, <&kp LS(TAB)>;
+
+            mods = <(MOD_RCTL)>;
+            keep-mods = <(MOD_RCTL)>;
+        };
+
+        w_ctrl_n: win-ctrl-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&w_r_ctrl_n>, <&kp UP>;
+
+            mods = <(MOD_LCTL)>;
+        };
+
+        w_shift_n: win-shift-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&none>, <&kp LEFT>;
+
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
+
+        w_shift_ctrl_n: win-shift-ctrl-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&w_shift_n>, <&w_ctrl_n>;
+
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        w_shift_ctrl_none_n: win_shift-ctrl-none-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LG(LEFT_ARROW))>, <&w_shift_ctrl_n>;
+
+            mods = <(MOD_LSFT|MOD_LCTL|MOD_RSFT|MOD_RCTL)>;
+        };
+
+        win_enc_n: win-enc-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&w_shift_ctrl_none_n>, <&w_alt_gui_n>;
+
+            mods = <(MOD_LALT|MOD_LGUI|MOD_RALT|MOD_RGUI)>;
+        };
+
+        win_enc: win-enc {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&vol_alt_gui_n>, <&vol_alt_gui_p>;
+            bindings = <&win_enc_n>, <&win_enc_p>;
 
             tap-ms = <10>;
-        };
-
-        pab_start: pab_start {
-            compatible = "zmk,behavior-tap-dance";
-            label = "PAB_START";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_PARENTHESIS>, <&kp LESS_THAN>;
-        };
-
-        pab_end: pab_end {
-            compatible = "zmk,behavior-tap-dance";
-            label = "PAB_END";
-            #binding-cells = <0>;
-            bindings = <&kp RIGHT_PARENTHESIS>, <&kp GREATER_THAN>;
-        };
-
-        scb_start: scb_start {
-            compatible = "zmk,behavior-tap-dance";
-            label = "SCB_START";
-            #binding-cells = <0>;
-            bindings = <&kp LBKT>, <&kp LEFT_BRACE>;
-        };
-
-        scb_end: scb_end {
-            compatible = "zmk,behavior-tap-dance";
-            label = "SCB_END";
-            #binding-cells = <0>;
-            bindings = <&kp RBKT>, <&kp RBRC>;
         };
     };
 };
@@ -189,24 +247,21 @@
 
         default_layer {
             bindings = <
-&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp GRAVE  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &mt LCTRL MINUS  &kp LCTRL  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &lt 3 L  &lt 2 SEMI  &mt LEFT_ALT SQT  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH  &mt LEFT_SHIFT EQUAL  &kp LALT  &kp LGUI  &lt 5 SPACE  &kp TAB  &kp BSPC  &lt 4 ENTER  &kp LEFT_WIN  &kp RIGHT_ALT  &tog 2  &kp ENTER  &kp LC(LG(LEFT_ARROW))  &kp LG(LC(RIGHT_ARROW))  &kp ENTER  &tog 2  &mt LCTRL LANG2  &mt LCTRL LANG1  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3
+&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp GRAVE  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &mt LCTRL MINUS  &kp LCTRL  &mt LEFT_SHIFT A  &mt LCTRL S  &mt LEFT_ALT D  &mt LEFT_WIN F  &kp G  &kp H  &kp J  &kp K  &lt 3 L  &lt 2 SEMICOLON  &mt LEFT_ALT SQT  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &mt RIGHT_SHIFT EQUAL  &kp LALT  &kp LGUI  &lt 5 SPACE  &kp TAB  &kp BSPC  &lt 4 ENTER  &kp LEFT_WIN  &kp RIGHT_ALT  &tog 2  &kp ENTER  &kp LG(LC(LEFT_ARROW))  &kp LG(LC(RIGHT_ARROW))  &kp ENTER  &tog 2  &mt LCTRL LANG2  &mt LCTRL LANG1  &mo 2  &mo 2  &mo 3  &mo 2  &mo 2  &mo 3  &mo 2  &mo 2  &mo 3
             >;
 
-            sensor-bindings = <
-                &inc_dec_kp LEFT_ARROW RIGHT_ARROW
-                &inc_dec_kp UP_ARROW   DOWN_ARROW
-            >;
+            sensor-bindings = <&scroll_left_right>, <&win_enc>;
         };
 
         layer_1 {
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &studio_unlock  &trans  &kp MINUS  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS  &trans  &trans  &trans  &trans  &trans  &kp F12  &trans  &kp SLASH  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &mkp MB3  &mkp MB1  &mkp MB2  &trans  &trans  &trans  &trans  &mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD  &kp EQUAL  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &studio_unlock  &trans  &kp MINUS  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS  &trans  &trans  &trans  &trans  &trans  &kp F12  &trans  &kp SLASH  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &mkp MB3  &mkp MB1  &mkp MB2  &trans  &trans  &trans  &trans  &mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD  &kp EQUAL  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         layer_2 {
             bindings = <
-&trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &trans  &kp MINUS  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS  &trans  &trans  &trans  &trans  &trans  &kp F12  &trans  &kp SLASH  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &mkp MB3  &mkp MB1  &mkp MB2  &trans  &trans  &trans  &trans  &mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD  &kp EQUAL  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &trans  &kp MINUS  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS  &trans  &kp LG(LC(LEFT_ARROW))  &kp LG(TAB)  &kp LG(LC(RIGHT_ARROW))  &trans  &kp F12  &trans  &kp SLASH  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &mkp MB3  &mkp MB1  &mkp MB2  &lt 3 KP_N0  &trans  &trans  &trans  &mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD  &kp EQUAL  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <
@@ -217,7 +272,7 @@
 
         layer_3 {
             bindings = <
-&kp ESCAPE  &kp LC(LS(TAB))  &kp UP_ARROW  &kp LC(TAB)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans  &kp LG(LS(RIGHT_ARROW))  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp ESCAPE  &kp LC(LS(TAB))  &kp UP_ARROW  &kp LC(TAB)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans  &kp LG(LS(RIGHT_ARROW))  &trans  &trans  &mkp MB3  &mkp MB1  &mkp MB2  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <
@@ -228,19 +283,21 @@
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp TILDE  &trans  &kp LESS_THAN  &kp LEFT_BRACE  &kp LBKT  &kp LEFT_PARENTHESIS  &kp PIPE  &kp AMPERSAND  &kp RIGHT_PARENTHESIS  &kp RBKT  &kp RIGHT_BRACE  &kp GREATER_THAN  &kp GRAVE  &trans  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT  &trans  &trans  &kp LCTRL  &kp PLUS  &kp ASTERISK  &kp UNDERSCORE  &kp BACKSLASH  &trans  &trans  &trans  &kp LANG2  &kp LS(TAB)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp TILDE  &trans  &kp LESS_THAN  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &kp PIPE  &kp AMPERSAND  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp GREATER_THAN  &kp GRAVE  &trans  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT  &trans  &trans  &kp CARET  &kp PLUS  &kp ASTRK  &kp UNDERSCORE  &kp BACKSLASH  &trans  &trans  &trans  &kp LANG2  &kp LS(TAB)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
+
+            sensor-bindings = <&scroll_left_right>, <&scroll_up_down>;
         };
 
         layer_5 {
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &trans  &studio_unlock  &trans  &kp PAGE_UP  &kp PAGE_DOWN  &kp HOME  &kp END  &trans  &trans  &kp LG(LC(LEFT_ARROW))  &kp UP_ARROW  &kp LG(LC(RIGHT_ARROW))  &trans  &trans  &trans  &kp LEFT_SHIFT  &kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &kp ESC  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp DEL  &kp LANG1  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp PAGE_UP  &kp PAGE_DOWN  &kp HOME  &kp END  &trans  &trans  &trans  &kp UP_ARROW  &trans  &trans  &trans  &trans  &kp LEFT_SHIFT  &kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &kp ESC  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp DEL  &kp LANG1  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         layer_6 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB3  &mkp MB1  &mkp MB2  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB3  &mkp MB1  &mkp MB2  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
