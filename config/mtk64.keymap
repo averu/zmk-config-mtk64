@@ -13,9 +13,6 @@
     quick-tap-ms = <0>;
 };
 
-&msc {
-};
-
 / {
     behaviors {
         // 垂直スクロール用のbehaviorの設定
