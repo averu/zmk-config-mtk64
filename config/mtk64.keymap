@@ -251,7 +251,7 @@
 
             sensor-bindings =
                 <&scroll_left_right>,
-                <&inc_dec_kp C_AL_NEXT_TASK C_AL_PREVIOUS_TASK>;
+                <&inc_dec_kp C_NEXT K_PREVIOUS>;
         };
 
         layer_5 {
