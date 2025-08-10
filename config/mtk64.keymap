@@ -48,7 +48,7 @@
         w_r_alt_p: win-right-alt-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp 0>, <&kp RIGHT>;
+            bindings = <&kp KP_N0>, <&kp RIGHT>;
 
             mods = <(MOD_RALT)>;
             keep-mods = <(MOD_RALT)>;
@@ -66,7 +66,7 @@
         w_r_gui_p: win-right-gui-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp 0>, <&kp LC(RIGHT)>;
+            bindings = <&kp KP_N0>, <&kp LC(RIGHT)>;
 
             mods = <(MOD_RGUI)>;
             keep-mods = <(MOD_RGUI)>;
@@ -92,7 +92,7 @@
         w_r_ctrl_p: win-right-ctrl-positive {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp 0>, <&kp TAB>;
+            bindings = <&kp KP_N0>, <&kp TAB>;
 
             mods = <(MOD_RCTL)>;
             keep-mods = <(MOD_RCTL)>;
@@ -141,7 +141,7 @@
         w_r_alt_n: win-right-alt-negative {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp 0>, <&kp LEFT>;
+            bindings = <&kp KP_N0>, <&kp LEFT>;
 
             mods = <(MOD_RALT)>;
             keep-mods = <(MOD_RALT)>;
@@ -159,7 +159,7 @@
         w_r_gui_n: win-right-gui-negative {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp 0>, <&kp LC(LEFT)>;
+            bindings = <&kp KP_N0>, <&kp LC(LEFT)>;
 
             mods = <(MOD_RGUI)>;
             keep-mods = <(MOD_RGUI)>;
@@ -185,7 +185,7 @@
         w_r_ctrl_n: win-right-ctrl-negative {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp 0>, <&kp LS(TAB)>;
+            bindings = <&kp KP_N0>, <&kp LS(TAB)>;
 
             mods = <(MOD_RCTL)>;
             keep-mods = <(MOD_RCTL)>;
