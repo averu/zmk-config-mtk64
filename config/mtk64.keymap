@@ -37,6 +37,149 @@
 
             tap-ms = <20>; // スクロールのタップ時間
         };
+
+        td0: td0 {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Shift/Caps Lock Tap Dance";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
+        };
+
+        alt_p: alt-positive {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N0>, <&kp LS(TAB)>;
+
+            mods = <(MOD_LALT|MOD_RALT)>;
+            keep-mods = <(MOD_LALT)>;
+        };
+
+        gui_p: gui-positive {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N0>, <&kp LEFT_ARROW>;
+
+            mods = <(MOD_LGUI|MOD_RGUI)>;
+            keep-mods = <(MOD_LGUI)>;
+        };
+
+        ag_p: alt-gui-positive {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&gui_p>, <&alt_p>;
+
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        arrow_p: arrow-positive {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_ARROW>, <&kp DOWN>;
+
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        vol_arrow_p: volume-arrow-positive {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp C_VOLUME_DOWN>, <&arrow_p>;
+
+            mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
+        };
+
+        vol_alt_gui_p: volume-alt-gui-positive {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&vol_arrow_p>, <&ag_p>;
+
+            mods = <(MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI)>;
+        };
+
+        alt_n: alt-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N0>, <&kp TAB>;
+
+            mods = <(MOD_LALT|MOD_RALT)>;
+            keep-mods = <(MOD_LALT)>;
+        };
+
+        gui_n: gui-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N0>, <&kp RIGHT_ARROW>;
+
+            mods = <(MOD_LGUI|MOD_RGUI)>;
+            keep-mods = <(MOD_LGUI)>;
+        };
+
+        ag_n: alt-gui-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&gui_n>, <&alt_n>;
+
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        arrow_n: arrow-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT_ARROW>, <&kp UP>;
+
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        vol_arrow_n: volume-arrow-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp C_VOLUME_UP>, <&arrow_n>;
+
+            mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
+        };
+
+        vol_alt_gui_n: volume-right-alt-gui-negative {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&vol_arrow_n>, <&ag_n>;
+
+            mods = <(MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI)>;
+        };
+
+        vol_alt_tab: volume-alt-tab {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&vol_alt_gui_n>, <&vol_alt_gui_p>;
+
+            tap-ms = <10>;
+        };
+
+        pab_start: pab_start {
+            compatible = "zmk,behavior-tap-dance";
+            label = "PAB_START";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_PARENTHESIS>, <&kp LESS_THAN>;
+        };
+
+        pab_end: pab_end {
+            compatible = "zmk,behavior-tap-dance";
+            label = "PAB_END";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT_PARENTHESIS>, <&kp GREATER_THAN>;
+        };
+
+        scb_start: scb_start {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SCB_START";
+            #binding-cells = <0>;
+            bindings = <&kp LBKT>, <&kp LEFT_BRACE>;
+        };
+
+        scb_end: scb_end {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SCB_END";
+            #binding-cells = <0>;
+            bindings = <&kp RBKT>, <&kp RBRC>;
+        };
     };
 };
 
