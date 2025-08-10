@@ -247,7 +247,7 @@
 &kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp GRAVE  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &mt LCTRL MINUS  &kp LCTRL  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &lt 3 L  &lt 2 SEMICOLON  &mt LEFT_ALT SQT  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &mt RIGHT_SHIFT EQUAL  &kp LALT  &kp LGUI  &lt 5 SPACE  &kp TAB  &kp BSPC  &lt 4 ENTER  &kp LEFT_WIN  &kp RIGHT_ALT  &tog 2  &kp ENTER  &kp LG(LC(LEFT_ARROW))  &kp LG(LC(RIGHT_ARROW))  &kp ENTER  &tog 2  &mt LCTRL LANG2  &mt LCTRL LANG1  &mo 2  &mo 2  &mo 3  &mo 2  &mo 2  &mo 3  &mo 2  &mo 2  &mo 3
             >;
 
-            sensor-bindings = <&scroll_left_right>, <&scroll_up_down>;
+            sensor-bindings = <&scroll_left_right>, <&win_enc>;
         };
 
         layer_1 {
