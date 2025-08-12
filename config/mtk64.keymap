@@ -10,8 +10,7 @@
 
 &mt {
     flavor = "balanced";
-    quick-tap-ms = <0>;
-    tapping-term-ms = <150>;
+    quick-tap-ms = <300>;
 };
 
 / {
@@ -216,7 +215,7 @@
         w_shift_ctrl_none_n: win_shift-ctrl-none-negative {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp DOWN_ARROW>, <&w_shift_ctrl_n>;
+            bindings = <&kp LG(LC(LEFT_ARROW))>, <&w_shift_ctrl_n>;
 
             mods = <(MOD_LSFT|MOD_LCTL|MOD_RSFT|MOD_RCTL)>;
         };
@@ -245,7 +244,7 @@
 
         default_layer {
             bindings = <
-&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp GRAVE  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &mt LCTRL MINUS  &kp LCTRL  &mt LEFT_SHIFT A  &mt LCTRL S  &mt LEFT_ALT D  &mt LEFT_WIN F  &kp G  &kp H  &kp J  &kp K  &lt 3 L  &lt 2 SEMICOLON  &mt LEFT_ALT SQT  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &mt RIGHT_SHIFT EQUAL  &kp LALT  &kp LGUI  &lt 5 SPACE  &kp TAB  &kp BSPC  &lt 4 ENTER  &kp LEFT_WIN  &kp RIGHT_ALT  &tog 2  &kp ENTER  &kp LG(LC(LEFT_ARROW))  &kp LG(LC(RIGHT_ARROW))  &kp ENTER  &tog 2  &mt LEFT_SHIFT LANG2  &mt LCTRL LANG1  &mo 2  &mo 2  &mo 3  &mo 2  &mo 2  &mo 3  &mo 2  &mo 2  &mo 3
+&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp GRAVE  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &mt LCTRL MINUS  &kp LCTRL  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &lt 3 L  &lt 2 SEMICOLON  &mt LEFT_ALT SQT  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &mt RIGHT_SHIFT EQUAL  &kp LALT  &kp LGUI  &lt 5 SPACE  &lt 2 TAB  &kp BSPC  &lt 4 ENTER  &kp LEFT_WIN  &kp RIGHT_ALT  &tog 2  &kp ENTER  &kp LG(LC(LEFT_ARROW))  &kp LG(LC(RIGHT_ARROW))  &kp ENTER  &tog 2  &mt LEFT_SHIFT LANG2  &mt LCTRL LANG1  &mo 2  &mo 2  &mo 3  &mo 2  &mo 2  &mo 3  &mo 2  &mo 2  &mo 3
             >;
 
             sensor-bindings = <&scroll_left_right>, <&win_enc>;
